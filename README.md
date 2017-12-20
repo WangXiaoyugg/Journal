@@ -18,3 +18,7 @@
 1. 接受一个函数，柯里化这个函数
 2. 每个参数返回一个函数
 3. 知道最后一个参数才执行
+
+- 21号，字符串去空,字符串模板浅析
+1. [参考链接](https://imququ.com/post/bom-and-javascript-trim.html)
+2. [字符串模板浅析](https://juejin.im/post/5a373e096fb9a044fc44d4c9)
