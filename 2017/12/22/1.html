@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>demo1</title>
+	<style>
+		h2,h5,#tooltipMsg,p{
+			white-space: nowrap;
+		}
+		td{
+			border:1px solid #ccc;
+			height: 50px;
+			text-align: center;
+			font-size: 10pt;
+			padding: 2px;
+		}
+
+		#tooltipMsg {
+			position: absolute;
+			border: 1px solid #ccc;
+			display: none;
+			color:#ccc;
+			font-size: 12px;
+			padding: 2px;
+			border-radius: 2px;
+			z-index: 1;
+		}
+	</style>
+</head>
+<body>
+	<h2>单元行鼠标悬停提示</h2>
+	<table id="tooltip" border='1' width="100">
+		<tr data-tooltip='第一行提示'>
+			<td>1</td>
+			<td>2</td>	
+		</tr>
+		<tr data-tooltip='第二行提示'>
+			<td>3</td>
+			<td>4</td>
+		</tr>
+	</table>
+	<div id="tooltipMsg">我是提示信息</div>
+<script>
+	window.onload = function(){
+		
+		var setCss = function(_this,cssOption){
+			//判断节点
+			//https://developer.mozilla.org/zh-CN/docs/Web/API/Node/nodeType
+			if(!_this || _this.nodeType === 3 || _this.nodeType === 8 || !_this.style){
+				return
+			}
+
+			for(var css in cssOption){
+				_this.style[css] = cssOption[css]
+			}
+
+			return _this;
+		}
+
+		var __mousePos = {
+			top:0,
+			left:0
+		}
+
+		var getMousePoint = function(e){
+			var __body = document.body;
+			var __left = 0;
+			var __top = 0;
+
+			// 这是 scrollY 的别名
+			if(typeof window.pageYOffset !== 'undefined'){
+				__left = window.pageYOffset;
+			}
+
+			// 这是 scrollX 的别名
+			if(typeof window.pageXOffset !== 'undefined'){
+				__top = window.pageXOffset
+			}
+
+			// 表明当前文档的渲染模式是混杂模式还是"标准模式".
+			// BackCompat 渲染模式为混杂模式
+
+
+			if(typeof document.compatMode !== 'undefined' &&
+				document.compatMode != 'BackCompat'){
+				__left = document.documentElement.scollLeft;
+				__top = document.documentElement.scollTop;
+			}
+
+			//https://developer.mozilla.org/zh-CN/docs/Web/API/Element/scrollTop
+			if(typeof __body !== 'undefined'){
+				__left = __body.scrollLeft;
+				__top = __body.scrollTop;
+			}
+			// https://developer.mozilla.org/zh-CN/docs/Web/API/MouseEvent/clientX
+			__left += e.clientX;
+			__top  += e.clientY;
+
+			__mousePos.left = __left;
+			__mousePos.top = __top;
+
+			return __mousePos;
+		}
+
+		var tooltip = function(e,tooltipMsg){
+			var trE = e.rows;
+			var trLen = trE.length;
+
+			for(var i=0;i<trLen;i++){
+				var trEi = trE[i];
+				dataTooltip = trEi.getAttribute('data-tooltip');
+
+				if(dataTooltip){
+					trEi.onmousemove = function(event){
+						//兼容IE
+						event = event || window.event;
+						var __pos = getMousePoint(event);
+
+						tooltipMsg.innerHTML = this.getAttribute('data-tooltip')
+						setCss(tooltipMsg,{
+							"left":__pos.left + 'px',
+							"top":__pos.top + 18 + 'px',
+							"display":"inline"
+						})
+					}
+
+					trEi.onmouseout = function(){
+						setCss(tooltipMsg,{
+							"display":"none"
+						})
+					}
+				}
+			}
+		}
+
+		tooltip(document.getElementById('tooltip'),document.getElementById('tooltipMsg'))
+
+	}
+</script>
+</body>
+</html>
