@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>表格光棒效果</title>
+	<style>
+		h2,h5,#tooltipMsg,p{
+			white-space: nowrap;
+		}
+
+		td {
+			boder:1px solid #ccc;
+			height: 50px;
+			text-align: center;
+			font-size: 10pt;
+			padding: 2px;
+		}
+	</style>
+</head>
+<body>
+	<h2>表格光棒效果</h2>
+	<table id="lightBar" border='1' width="500">
+		<tr>
+			<td>1</td>
+			<td>2</td>
+			<td>3</td>
+			<td>4</td>
+			<td>5</td>
+		</tr>	
+	</table>
+<script>
+	window.onload = function () {
+		
+		var trs = document.getElementById('lightBar').rows,
+			trLen = trs.length;
+
+		for(var i=0;i<trLen;i++){
+
+			trs[i].onmousemove = function(event){
+				this.style.backgroundColor = '#5a5a5a'
+			}
+
+			trs[i].onmouseout = function(){
+				this.style.backgroundColor = '#fff';
+			}
+		}	
+
+	}
+</script>	
+</body>
+</html>
