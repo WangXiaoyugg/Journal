@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>demo</title>
+</head>
+<body>
+	<button id='btn'>点我</button>
+	<script>
+		var processor = {
+			timeoutId:null,
+			i:0,
+			performProcessing:function(){
+				this.i += 1
+				console.log(this.i)
+			},
+			process:function(){
+				console.log('this.timeoutId',this.timeoutId)
+				clearTimeout(this.timeoutId)
+				var that = this
+				this.timeoutId = setTimeout(function(){
+					that.performProcessing()
+				},1000)
+			}
+		}
+
+		document.getElementById('btn').onclick = function(){
+			processor.process()
+		}
+	</script>
+</body>
+</html>
