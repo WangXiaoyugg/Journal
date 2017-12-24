@@ -32,3 +32,7 @@
 1. setTimeout 模拟 setInterval
 2. 数组分块
 3. 函数节流
+
+- 24号，学习react-router的解析文章
+1. react-router [参考资料](https://zhenhua-lee.github.io/react/history.html)
+2. 使用构造函数生成一个正则表达式 - 正则表达式迷你书
