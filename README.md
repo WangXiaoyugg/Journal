@@ -36,3 +36,10 @@
 - 24号，学习react-router的解析文章
 1. react-router [参考资料](https://zhenhua-lee.github.io/react/history.html)
 2. 使用构造函数生成一个正则表达式 - 正则表达式迷你书
+
+- 29号，学习css
+1. 制作一个圆形的头像上传
+  - [错误的写法](http://js.jirengu.com/hafayeqefa/4/edit)
+  - [正确的写法](http://js.jirengu.com/nucocuxego/2/edit)
+2. 一个带有涟漪的按钮
+  - [demo](http://js.jirengu.com/cilewopumo/7/edit)	  
