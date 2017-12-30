@@ -42,4 +42,10 @@
   - [错误的写法](http://js.jirengu.com/hafayeqefa/4/edit)
   - [正确的写法](http://js.jirengu.com/nucocuxego/2/edit)
 2. 一个带有涟漪的按钮
-  - [demo](http://js.jirengu.com/cilewopumo/7/edit)	  
+  - [demo](http://js.jirengu.com/cilewopumo/7/edit)
+3. 响应式布局
+  - 隐藏 + 折行 + 自适应空间
+  - rem/viewport/media query
+  	I. viewport window.innerWidth 动态计算
+  	II. rem  html{fontSize: 20px} 大的写在上面，小的写在下面，精确性很高的网站不适合
+  	III. @media (max-width) 精准匹配
