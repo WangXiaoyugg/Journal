@@ -49,3 +49,4 @@
   	I. viewport window.innerWidth 动态计算
   	II. rem  html{fontSize: 20px} 大的写在上面，小的写在下面，精确性很高的网站不适合
   	III. @media (max-width) 精准匹配
+4. flex 布局
