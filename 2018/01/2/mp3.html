@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>mp3 player</title>
+</head>
+<body>
+	<div>
+		<div>正在播发的mp3文件: demo</div>
+		<div>
+			<input type="button" value="play" id='play'>
+		</div>
+		<div>
+			进度: <input type="process" value='0'>	
+		</div>
+		<div>
+			修改进度:
+			<input type="text" value="0" id='setProcess'>
+			<input type="button" id='ok' value='ok'>
+		</div>
+		<div>
+			<input type="button" id='volumeUp' value='+'>
+			<input type="button" id='volumeDown' value='-'>
+			<input type="button" id='muted' value='muted'>
+		</div>
+		<audio id='audio' src="./demo.mp3" controls="controls"></audio>
+	</div>
+<script>
+	window.onload = function () {
+		
+		var Mp3Player = function (option) {
+			
+			this.audio = option.audio;
+			this.play = option.play;
+			this.process = option.process;
+			this.setProcess = option.process;
+			this.ok = option.ok;
+			this.volumeUp = option.volumeUp;
+			this.volumeDown = option.volumeDown;
+			this.muted = option.muted;
+
+			var player = this;
+
+			this.play.onclick = function () {
+				if(this.value === 'play'){
+					player.start();
+					this.value = 'stop';
+				}else {
+					player.pause();
+					this.value = 'play';
+				}
+			}
+
+			this.volumeUp.onclick = function () {
+				player.setVolumeUp();
+			}
+
+			this.volumeDown.onclick = function () {
+				player.setVolumeDown();
+			}
+
+			this.muted.onclick = function () {
+				player.setMuted();
+			}
+
+			setInterval(function() {
+				player.getProcess();
+			},1000);
+
+			this.ok.onclick = function () {
+				player.setProcess()
+			}
+
+		}
+
+		Mp3Player.prototype.start = function () {
+			this.audio.play()
+		}
+
+		Mp3Player.prototype.pause = function () {
+			this.audio.pause()
+		}
+
+		Mp3Player.prototype.getProcess = function () {
+			this.process.value = Math.floor(this.audio.currentTime)+'s';
+		}
+
+		Mp3Player.prototype.setProcess = function () {
+			this.audio.currentTime = this.setProcess().value || 0;
+		}
+
+		Mp3Player.prototype.setVolumeUp = function () {
+			this.audio.volume = this.audio.volume + 0.1 > 1 ? 1 : this.audio.volume + 0.1
+		}
+
+		Mp3Player.prototype.setVolumeDown = function () {
+			this.audio.volume = this.audio.volume - 0.1 < 0 ? 0 : this.audio.volume - 0.1
+		}
+
+		Mp3Player.prototype.setMute = function () {
+			this.audio.muted = this.audio.muted;
+			this.audio.muted ? (this.muted.value = 'sound'):(this.muted.value='muted')
+		}
+
+		return  new Mp3Player(option)
+
+
+	Mp3Player({
+		auido:document.getElementById('audio'),
+		play:document.getElementById('play'),
+		process:document.getElementById('process'),
+		setProcess:document.getElementById('setProcess'),
+		ok:document.getElementById('ok'),
+		volumeUp:document.getElementById('volumeUp'),
+		volumeDown:document.getElementById('volumeDown'),
+		muted:document.getElementById('muted')
+	})
+
+}
+</script>
+</body>
+</html>

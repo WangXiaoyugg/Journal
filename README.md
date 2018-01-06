@@ -46,7 +46,27 @@
 3. 响应式布局
   - 隐藏 + 折行 + 自适应空间
   - rem/viewport/media query
-  	I. viewport window.innerWidth 动态计算
-  	II. rem  html{fontSize: 20px} 大的写在上面，小的写在下面，精确性很高的网站不适合
-  	III. @media (max-width) 精准匹配
+  	1. viewport window.innerWidth 动态计算
+  	2. rem  html{fontSize: 20px} 大的写在上面，小的写在下面，精确性很高的网站不适合
+  	3. @media (max-width) 精准匹配
+    
 4. flex 布局
+5. border-radius 
+	- 圆角矩形
+	- 圆形
+	- 扇形/半圆
+	- 一些奇怪的角角
+6. vue 中的css
+  - scoped
+  - 随机属性
+
+
+
+### 2018年
+#### 1月
+
+- 1号，学习canvas(todo)
+- 2号，写简单html5 mp3 播放器
+
+- 6号 ，学习linux 操作
+  1. [useradd与adduser的区别](https://www.cnblogs.com/whitehorse/p/5847278.html)
