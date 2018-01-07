@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>slide</title>
+	<style>
+		.frankSlides{
+			margin:0 auto;
+			overflow: hidden;
+			position: relative;
+		}
+		.frankSlides ol {
+			margin:0;
+			padding: 0;
+			list-style: none;
+			display:flex;
+			transition: transform 0.5s;
+		}
+		.frankSlides ol img {
+			vertical-align: top;
+		}
+		.frankSlides .frankSlide-prev{
+			position: absolute;
+			top:50%;
+			left: 0;
+			transform: translateY(-50%);
+		}
+		.frankSlides .frankSlide-next{
+			position: absolute;
+			top:50%;
+			right: 0;
+			transform: translateY(-50%);
+		}
+	</style>
+	<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+</head>
+<body>
+	<div class="slide">
+		<ol>
+			<li>
+				<img src="https://i.loli.net/2018/01/03/5a4c93e92b0e1.png" alt="">
+			</li>
+			<li>
+			<img src="https://i.loli.net/2018/01/03/5a4c93e931f93.png" alt="">
+			</li>
+			<li>
+			<img src="https://i.loli.net/2018/01/03/5a4c93e938b6b.png" alt="">	
+			</li>
+		</ol>
+	</div>
+	<script>
+		
+		class Slide {
+			constructor(options){
+				this.options = options;
+				this.$element = $(this.options.element);
+				this.$element.addClass('frankSlides');
+				this.width = this.$element.children('ol').children('li').width();
+				this.$element.width(this.width);
+				this.current = 0;
+				this.timer = null;
+				this.$prev = $('<button class="frankSlide-prev">上一张</button>')
+				this.$next = $('<button class="frankSlide-next">下一张</button>')
+				this.$element.append(this.$prev);
+				this.$element.append(this.$next);
+				this.$prev.on('click',()=>this.prev())
+				this.$next.on('click',()=>this.next())
+				this.go(0);
+				this.$element.on('mouseenter',()=>{
+					this.stop();
+				})
+				this.$element.on('mouseleave',()=>{
+					this.play();
+				})
+				if(this.options.autoPlay){
+					this.play();
+				}
+			}
+
+			go(index) {
+				let $ol = this.$element.children('ol');
+				let $items = $ol.children('li');
+				if(index >= $items.length){
+					index = 0;
+				}else if(index < 0){
+					index = $items.length - 1;	
+				}
+
+				$ol.css({
+					transform:`translateX(${-index * this.width}px)`
+				})
+				
+				this.current = index;
+			}
+
+			next(){
+				console.log('next');
+				this.go(this.current + 1);
+			}
+			prev(){
+				console.log('prev');
+				this.go(this.current - 1);
+			}
+
+			play(){
+				this.timer = setInterval(()=>{
+					this.next();
+				},2000);
+			}
+
+			stop(){
+				clearInterval(this.timer);
+			}
+		}	
+
+		var slide = new Slide({
+			element:'.slide',
+			autoPlay:true,
+			controls:false,
+			pager:false,
+		})
+	</script>
+</body>
+</html>
