@@ -71,3 +71,4 @@
 - 6号 ，学习linux 操作
   1. [useradd与adduser的区别](https://www.cnblogs.com/whitehorse/p/5847278.html)
   2. freeCodeCamp 基础算法练习
+- 15号，学习 你不知道javascript的 值和类型两章  

@@ -333,3 +333,190 @@ rot13 = (str)=>{
     return String.fromCharCode((L.charCodeAt(0) %26)+65)
   })  
 }
+
+function sumAll(arr){
+  var max = Math.max(arr[0],arr[1]);
+  var min = Math.min(arr[0],arr[1]);
+  var sum = 0;
+  for(var i=0;i<=max;i++){
+    sum += i;
+  }
+  return sum;
+}
+
+
+function sumAll(arr) {
+  var start;
+  var end;
+  var sum;
+  // if(arr[0] < arr[1]){
+  //   start = arr[0];
+  //   end = arr[1];
+  // }else {
+  //   start = arr[1];
+  //   end = arr[0];
+  // }
+  // var sortArr = arr.sort((a,b) => a-b);
+  // start = arr[0];
+  // end = arr[1];
+
+  start = Math.min(...arr);
+  end = Math.max(...arr);
+
+  sum = ((start+end) * (end-start + 1))/2;
+  
+  return sum;
+}
+
+sumAll([1, 4]);
+
+function sumAll(arr){
+  var sum = 0;
+  for(var i=Math.min(...arr);i<=Math.max(...arr);i++){
+    sum += i
+  }
+  return sum
+}
+
+function diffArray(arr1,arr2){
+  var newArr = []
+
+  function onlyInFirst(first,second){
+    for(var i=0;i<first.length;i++){
+      if(second.indexOf(first[i] === -1)){
+        newArr.push(first[i])
+      }
+    }
+  }
+
+  onlyInFirst(arr1,arr2)
+  onlyInFirst(arr2,arr1)
+  return  newArr;
+} 
+
+
+function diffArray(arr1,arr2){
+  return arr1.concat(arr2).filter(item => !arr1.includes(item) || !arr2.includes(item))
+}
+
+
+function diffArray(arr1,arr2){
+  return arr1.filter(el => !arr2.includes(el))
+              .concat(
+                  arr2.filter(el => !arr1.includes(el))
+              )
+}
+
+//罗马数字
+var convertToRoman = function(num){
+  var decimalValue = [1000,900,500,400,100,90,50,40,10,9,5,4,1];
+  var romanNumeral = ['M',"CM",'D',"CD","C","XC","L","XL","X","IX","V","IV","I"];
+
+  var romanized = '';
+
+  for(var index=0;index<decimalValue.length;index++){
+    while(decimalValue[index] <= num){
+      romanized += romanNumeral[index];
+      num -= decimalValue[index];
+    }
+  }
+
+  return romanized;
+}
+
+
+function convertToRoman(num){
+  var romans = ['I','V','X','L','C','D','M'],
+      ints = [],
+      romanNumber = [],
+      numeral = '';
+
+ while(num){
+  ints.push(num % 10);
+  num = Math.floor(num /10);         
+ } 
+ for(i=0;i<ints.length;i++){
+    units(ints[i]);
+  }    
+
+  function units(){
+    numeral = romans[i *2];
+    switch(ints[i]){
+      case 1:
+        romanNumber.push(numeral);
+      case 2:
+        romanNumber.push(numeral.concat(numeral))
+      case 3:
+         romanNumber.push(numeral.concat(numeral).concat(numeral))
+      case 4:
+         romanNumber.push(numeral.concat(romans[(i*2)+1]));
+      case 5:
+          romanNumber.push(romans[(i*2)+1]);
+      case 6:
+        romanNumber.push(romans[(i*2)+1].concat(numeral));
+        break;
+      case 7:
+        romanNumber.push(romans[(i*2)+1].concat(numeral).concat(numeral));
+        break;
+      case 8:
+        romanNumber.push(romans[(i*2)+1].concat(numeral).concat(numeral).concat(numeral));
+        break;
+      case 9:
+        romanNumber.push(romans[i*2].concat(romans[(i*2)+2]));
+      }            
+    }
+    return romanNumber.reverse().join('').toString();
+  }
+}
+
+
+function convertToRoman(num){
+  var romans = [
+      ["I","V"], // 10 ^ 0
+      ["X","L"], //10 ^ 1
+      ["C","D"] , // 10 ^ 2
+      ["M"], //10^  
+  ],
+  digits = num.toString().split('').reverse().map((item,index) => {
+    return parseInt(item);
+  })
+  numeral= '';
+
+  for(var i=0;i<digits.length;i++){
+    numeral = romans[i][0].repeat(digits[i]) + numeral;
+
+    if(romans[i][1]){
+      numeral = numeral
+            //Change occurrences of 5 * 10^i to the corresponding 5-multiple Roman numeral
+            .replace(romans[i][0].repeat(5),romans[i][1])
+            // Shorten occurrences of 9 * 10^i
+            .replace(romans[i][1] + romans[i][0].repeat(4),romans[i][0] + romans[i+1][0])
+            // Shorten occurrences of 4 * 10^i
+            .replace(romans[i][0].repeat(4), romans[i][0] + romans[i][1])
+    }
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
