@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>clearRect</title>
+</head>
+<body>
+    <canvas id='canvas'></canvas>
+    <script>
+        var canvas = document.getElementById('canvas')
+        var ctx = canvas.getContext('2d')
+        
+        var init = function () {
+            draw();
+            setTimeout(() => {
+                ctx.clearRect(0, 0, canvas.width, canvas.height)
+            }, 2000)
+            // window.requestAnimationFrame(draw)
+        }
+
+        function draw() {
+            ctx.beginPath();
+            ctx.moveTo(20, 20);
+            ctx.lineTo(200, 20)
+            ctx.lineTo(120, 120)
+            ctx.closePath(); // 绘制完成
+
+            ctx.stroke()
+            
+            // ctx.clearRect(0, 0, canvas.width, canvas.height)
+            // window.requestAnimationFrame(draw)
+            
+
+            
+        }
+
+        init()
+        
+       
+
+       
+    </script>
+</body>
+</html>

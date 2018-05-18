@@ -71,4 +71,21 @@
 - 6号 ，学习linux 操作
   1. [useradd与adduser的区别](https://www.cnblogs.com/whitehorse/p/5847278.html)
   2. freeCodeCamp 基础算法练习
-- 15号，学习 你不知道javascript的 值和类型两章  
+- 15号，
+  1. 学习 你不知道javascript的 值和类型两章  
+  2. 学习 你不知道的javascript 的原生函数 和 强制类型转换
+- 17号,代码重构
+  1. 原则
+    - 易读性优先
+    - 不要为了性能过度优化而牺牲代码可读性
+    - 复杂性守恒，逻辑复杂，代码肯定也是复杂的，逻辑简单，代码也是简单的
+  2. 程序猿三大难题
+    - 变量命名
+    - 缓存失效
+    - 循环边界
+
+
+#### 5月
+
+- [css 常见面试题](https://funteas.com/topic/5ada8eac230d1e5e25e45b89)
+- [canvas太阳系动画](https://developer.mozilla.org/zh-CN/docs/Web/API/Canvas_API/Tutorial/Basic_animations)

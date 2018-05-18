@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>太阳系动画</title>
+</head>
+<body>
+    <canvas id='canvas' width="300" height="300"></canvas>
+    <script>
+        var sun = `https://mdn.mozillademos.org/files/1456/Canvas_sun.png`
+        var moon = `https://mdn.mozillademos.org/files/1443/Canvas_moon.png`
+        var earth = `https://mdn.mozillademos.org/files/1429/Canvas_earth.png`
+
+        var createImage = function(src) {
+            var img = new Image();
+            img.src = src;
+            return img;
+        }
+
+        var init = function() {
+            window.requestAnimationFrame(draw)
+        }
+
+        var draw = function() {
+            var ctx = document.getElementById('canvas').getContext('2d')
+            
+            // 在绘制新形状时应用的合成操作的类型
+            // destination-over : New shapes are drawn behind the existing canvas content
+            ctx.globalCompositeOperation = 'destination-over'
+            // 清除画布
+            ctx.clearRect(0, 0, 300, 300)
+
+            // 填充颜色
+            ctx.fillStyle = 'rgba(0,0,0,.4)'
+            // 描边颜色
+            ctx.strokeStyle = 'rgba(0,153,255,0.4)'
+
+            // 保存当前状态
+            ctx.save();
+
+            // 移动到 150， 150 坐标
+            ctx.translate(150, 150);
+
+            // Earth
+            var time = new Date()
+            // 1 分种绕太阳一圈，规定了每秒地球绕太阳旋转的弧度
+            ctx.rotate(((2 * Math.PI) / 60) * time.getSeconds() + ((2 * Math.PI) / 60000 ) * time.getMilliseconds())
+            ctx.translate(105, 0)
+            ctx.fillRect(0, -12, 50, 24) // shadow
+            ctx.drawImage(createImage(earth), -12, -12)
+
+            // Moon
+            ctx.save()
+            ctx.rotate(((2 * Math.PI) / 6) * time.getSeconds() + ((2 * Math.PI) / 6000) * time.getMilliseconds())
+            ctx.translate(0, 28.5)
+            ctx.drawImage(createImage(moon), -3.5, -3.5)
+            ctx.restore();
+
+            ctx.restore();
+
+            ctx.beginPath()
+            ctx.arc(150, 150, 105, 0, Math.PI * 2 , false) // Earth orbit
+            ctx.drawImage(createImage(sun), 0, 0, 300, 300);
+
+            window.requestAnimationFrame(draw)
+        }
+
+        init();
+    </script>
+</body>
+</html>
