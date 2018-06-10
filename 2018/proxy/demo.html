@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>proxy</title>
+</head>
+<body>
+    <script>
+        // const person = {
+        //     name: 'garen',
+        //     province: '安徽省',
+        //     city: '合肥',
+        //     get address () {
+        //        return `${this.province}-${this.city}`
+        //     }
+        // }
+
+        // 主要弊端是污染了原有的对象, 不灵活
+        // person.address = person.province + '-' + person.city
+
+        // const enhancePerson = new Proxy(person, {
+        //     ownKeys(target) {
+        //         return Object.keys(target).filter(item => item !== 'address')
+        //     }
+            // get (target, name) {
+            //     switch(name) {
+            //         case 'address':
+            //             return `${target['province']}- ${target['city']}`
+            //         default:
+            //             return target[name]    
+            //     }
+            // },
+            // set(target, propKey, value) {
+            //     target[propKey] = value + '-new'
+            // }
+        // })
+
+        // console.log(Object.keys(enhancePerson))
+
+        // console.log('enhancePerson.address', enhancePerson.address);
+        // console.log('person', person);
+        // console.log(person === enhancePerson)
+        // enhancePerson.city = '北京'
+        // console.log(enhancePerson.city === person.city )
+
+        const arr = [1, 2, 3, 4, 5, 6, 7, 8]
+        const list = new Proxy(arr, {
+            get(target, name) {
+                if(name.includes(':')) {
+                    const indexs = name.split(':')
+                    return target.slice(indexs[0], indexs[1])
+                }
+                return target[name]
+            }
+        })
+
+        console.log(list['-1:-2']) // 不支持负数
+
+        const obj = {
+            a: {
+                b: {
+                    c: 'xiaoyun'
+                }
+            }
+        }
+        const obj1 = new Proxy(obj, {
+            get (target, name) {
+                const keys = name.split('.')
+                return keys.reduce((pre, next) => {
+                    if( pre != null && pre !== undefined) {
+                        pre = pre[next]  
+                    }
+                    return pre
+                }, target)                
+            }
+        })
+        console.log(obj1['a.b.c'])
+    </script>
+</body>
+</html>

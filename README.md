@@ -90,3 +90,19 @@
 - [css 常见面试题](https://funteas.com/topic/5ada8eac230d1e5e25e45b89)
 - [canvas太阳系动画](https://developer.mozilla.org/zh-CN/docs/Web/API/Canvas_API/Tutorial/Basic_animations)
 - koa 入门学习
+- http 学习
+- microtask优先于macrotask, [理解 JavaScript 中的 macrotask 和 microtask](https://juejin.im/entry/58d4df3b5c497d0057eb99ff)
+- [vscode doc](https://code.visualstudio.com/docs/editor/debugging#_launch-configurations)， [NodeJS debug](https://segmentfault.com/a/1190000009084576)
+- [aflerd基本使用](https://www.jianshu.com/p/e9f3352c785f)
+- [快来围观一下JavaScript的Proxy](https://juejin.im/post/5b09234d6fb9a07acf569905?utm_source=gold_browser_extension)
+- 常见的排序算法实现
+- mysql 安装流程及修改密码(root: admin)
+- [vue父子，兄弟组件的生命周期](https://mp.weixin.qq.com/s/gn6Ls7W7sx9ITWyyQjUklA)
+
+### 6月
+- [linux 端口占用解决](https://blog.csdn.net/mingzznet/article/details/38345875)
+- [linux 上传目录](http://www.cnblogs.com/no7dw/archive/2012/07/07/2580307.html)
+- [pragma](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Pragma), 类似于cache-control:no-cache
+- [30 HTTP headers](https://www.fastly.com/blog/headers-we-dont-want)
+- [HTTP Headers](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers)
+- 自己实现一个简易版Koa
