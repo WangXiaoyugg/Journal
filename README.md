@@ -106,3 +106,30 @@
 - [30 HTTP headers](https://www.fastly.com/blog/headers-we-dont-want)
 - [HTTP Headers](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers)
 - 自己实现一个简易版Koa
+- 阅读器的翻译效果实现
+- [chrome 控制台小技巧](https://coolshell.cn/articles/17634.html)
+- [ES2018（ES9）的新特性](https://juejin.im/post/5b2a186cf265da596d04a648)
+- [graphQL 参考资料](http://graphql.cn/code/#javascript)
+
+#### 7月
+- Python 小工具制作
+- react 知识复习
+  1. 生命周期
+  2. jsx
+  3. diff算法
+  4. 组件系统，无状态组件
+     - 无状态组件, [参考资料](https://juejin.im/entry/59a980306fb9a02485103d0b)
+       1. 纯函数，整洁易读
+       2. 无状态，无 this, 无需绑定
+       3. 便于测试
+       4. 性能高，使用函数调用的方式
+       5. PureComponent 实现性能优化，让你少写
+          shouldComponentUpdate(nextProps, nextState)的判断
+
+  5. react-router 使用和语法
+  6. redux 和 react-redux 语法，原理，使用场景
+  7. redux 中间件原理，redux-sega
+  8. rx.js 入门使用
+  9. react 测试, react16新增API
+
+- 数据库知识学习，mysql ,mongoDB, 选学
