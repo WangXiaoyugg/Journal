@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>mvvm-step-1</title>
+</head>
+<body>
+<script>
+	var data = {
+		name: 'garen',
+		age: 20,
+		friends: ['杰比','逃避','石壁']
+	}
+
+	observe(data);
+	// 观察data的变化
+	function observe (data) {
+		if(!data || typeof data !== 'object') return false;
+
+		let keys = Object.keys(data);
+		keys.forEach(key => {
+			let val = data[key]
+			Object.defineProperty(data,key,{
+				enumerable: true,
+				configurable: false,
+				get() {
+					console.log(`get ${val}`)
+				},
+				set(newVal) {
+					console.log(`val changes: ${val} => ${newVal}`)
+					val = newVal;
+
+				}
+			})
+
+			// 如果是个对象递归调用
+			if(typeof val === 'object') {
+				observe(val) // 
+			}
+		})
+	}
+</script>	
+</body>
+</html>

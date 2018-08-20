@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>mvvm - step4</title>
+</head>
+<body>
+	<div id="app">
+		<h1>{{name}}' s age is {{age}}</h1>
+	</div>
+
+	<script>
+		function observe(data) {
+			if(!data || typeof data !== 'object') return;
+			var keys = Object.keys(data);
+
+			keys.forEach( key => {
+
+
+				let val = data[key]
+				let subject = new Subject();
+				Object.defineProperty(data, key, {
+					enumerable: true,
+					configurable: false,
+					get() {
+						console.log(`val: ${val}`)
+						if(currentObserver) {
+							console.log('has currentObserver')
+							currentObserver.subscribeTo(subject);
+						}
+						return val;
+
+					},
+					set(newVal) {
+						val = newVal
+						console.log(`${val} to ${newVal}`)
+						subject.notify()
+						
+					}
+				})
+				
+				if(typeof val === 'object') {
+					observe(val);
+				}
+			}) 
+		}
+
+		let id = 0;
+		let currentObserver = null;
+
+		class Subject {
+			constructor() {
+				this.id = id++
+				this.observers = []
+			}
+
+			addObserver(observer) {
+				this.observers.push(observer)
+			}
+
+			removeObserver(observer) {
+				let index = this.observers.indexOf(observer)
+				if(index > -1) {
+					this.observers.splice(index, 1)
+				}
+			}
+
+			notify() {
+				this.observers.forEach(observer => {
+					observer.update()
+				})
+			}
+		}
+
+
+		class Observer {
+			constructor(vm, key, cb) {
+				this.subjects = {}
+				this.vm = vm;
+				this.key = key;
+				this.cb = cb;
+				this.value = this.getValue()
+			}
+
+			update() {
+				let oldVal = this.value;
+				let value = this.getValue();
+				if(value !== oldVal) {
+					this.value = value;
+					this.cb.bind(this.vm)(value, oldVal);
+				}
+			}
+
+			subscribeTo(subject) {
+				if(!this.subjects[subject.id]) {
+					console.log(`subscribeTo.. ${subject}`)
+					subject.addObserver(this)
+					this.subjects[subject.id] = subject
+				}
+			}
+
+			getValue() {
+				currentObserver = this;
+				let value =  this.vm.$data[this.key]
+				currentObserver = null;
+				return value;
+			}
+
+		}
+
+		class Mvvm {
+			constructor(opts) {
+				this.init(opts);
+				observe(this.$data)
+				this.compile()
+			}
+
+			init(opts){
+				this.$el = document.querySelector(opts.el)
+				this.$data = opts.data;
+				this.observers = [];
+			}
+
+			compile() {
+				this.traverse(this.$el)
+			}
+
+			traverse(node) {
+				if(node.nodeType === 1) { // 元素节点
+					node.childNodes.forEach(childNode => {
+						this.traverse(childNode)
+					})
+				} else if (node.nodeType === 3) { // 文本节点
+					this.renderText(node)
+				}
+			}
+
+			renderText(node) {
+				console.log('node', node);
+				let reg = /{{(.+?)}}/g;
+				let match;
+				while(match = reg.exec(node.nodeValue)) {
+					console.log('match', match);
+					let raw = match[0]
+					let key = match[1].trim()
+					node.nodeValue = node.nodeValue.replace(raw, this.$data[key])
+					new Observer(this, key, function(val, oldVal) {
+						node.nodeValue = node.nodeValue.replace(oldVal, val)
+					})
+				}
+			}
+		}
+
+		debugger;
+
+		let vm = new Mvvm({
+			el:"#app",
+			data: {
+				name: 'garen',
+				age: 24
+			}
+		})
+
+
+		setInterval(function() {
+			vm.$data.age++
+		}, 1000)
+
+	</script>
+</body>
+</html>

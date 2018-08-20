@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>mvvm-step-3</title>
+</head>
+<body>
+	<script>
+		class Publish {
+			constructor() {
+				this.subscribes = [];	
+			}
+
+			addSub(sub) {
+				if(this.subscribes.indexOf(sub) < 0) {
+					this.subscribes.push(sub)
+				}
+			}
+
+			removeSub(sub) {
+				let index = this.subscribes.indexOf(sub)
+				if(index >= 0) {
+					this.subscribes.splice(index, 1)
+				}
+			}
+
+			notify() {
+				this.subscribes.forEach(sub => sub.update())
+			}
+		}
+
+		class Subscriber {
+			constructor(name) {
+				this.name = name
+			}
+
+			update() {
+				console.log(`${this.name} updated`)
+			}
+
+			addToPub(pub) {
+				pub.addSub(this)
+			}
+		}
+
+		let pub = new Publish();
+		let sub1 = new Subscriber('hunger');
+		let sub2 = new Subscriber('vallery');
+
+		sub1.addToPub(pub)
+		sub2.addToPub(pub)
+
+		pub.notify();
+
+	</script>
+</body>
+</html>
