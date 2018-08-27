@@ -7,4 +7,6 @@
 - [koa2-note](https://chenshenhai.github.io/koa2-note/)
 - [goland-chines-community](https://studygolang.com/)
 - [es6-ruanyifeng](http://es6.ruanyifeng.com/)
+- [JS Data Structures: Linked List](https://codeburst.io/js-data-structures-linked-list-3ed4d63e6571)
+
 
