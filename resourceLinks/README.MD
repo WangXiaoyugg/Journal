@@ -2,7 +2,7 @@
 
 ### 2018/08
 - [why-npm-script](https://css-tricks.com/why-npm-scripts/)
-- [leetcod chinese](https://leetcode-cn.com/explore/interview/card/top-interview-questions-easy/5/strings/34/)
+- [leetcode chinese](https://leetcode-cn.com/explore/interview/card/top-interview-questions-easy/5/strings/34/)
 - [free-code-camp](https://learn.freecodecamp.org/)
 - [koa2-note](https://chenshenhai.github.io/koa2-note/)
 - [goland-chines-community](https://studygolang.com/)
