@@ -21,3 +21,5 @@
 - [manifest.json](https://developers.google.com/web/fundamentals/web-app-manifest/?hl=zh-cn)
 - [精读《12 个评估 JS 库你需要关心的事》](https://juejin.im/post/5ba9867a6fb9a05d1f220d2b?utm_source=gold_browser_extension)
 - [Build Your Own React](https://hackernoon.com/build-your-own-react-48edb8ed350d)
+- [preload 文档](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Preloading_content)
+- [有一种优化，叫Preload](https://juejin.im/entry/5bac37fc6fb9a05d07194893?utm_source=gold_browser_extension)
