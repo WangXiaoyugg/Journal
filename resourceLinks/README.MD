@@ -23,3 +23,5 @@
 - [Build Your Own React](https://hackernoon.com/build-your-own-react-48edb8ed350d)
 - [preload 文档](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Preloading_content)
 - [有一种优化，叫Preload](https://juejin.im/entry/5bac37fc6fb9a05d07194893?utm_source=gold_browser_extension)
+- [snake game](https://codepen.io/andhouse/pen/wzjKjw)
+- [How to build a “Snake” game using JavaScript and HTML5 Canvas](http://www.competa.com/blog/how-to-build-a-snake-game-using-javascript-and-html5-canvas/)
