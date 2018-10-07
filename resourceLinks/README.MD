@@ -25,3 +25,6 @@
 - [有一种优化，叫Preload](https://juejin.im/entry/5bac37fc6fb9a05d07194893?utm_source=gold_browser_extension)
 - [snake game](https://codepen.io/andhouse/pen/wzjKjw)
 - [How to build a “Snake” game using JavaScript and HTML5 Canvas](http://www.competa.com/blog/how-to-build-a-snake-game-using-javascript-and-html5-canvas/)
+- [JavaScript 原生实现《贪吃蛇》](https://juejin.im/entry/586d9a2861ff4b006b318789)
+- [SASS用法指南](http://www.ruanyifeng.com/blog/2012/06/sass.html)
+- [30-seconds-of-css](https://30-seconds.github.io/30-seconds-of-css/)
