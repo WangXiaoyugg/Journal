@@ -28,3 +28,6 @@
 - [JavaScript 原生实现《贪吃蛇》](https://juejin.im/entry/586d9a2861ff4b006b318789)
 - [SASS用法指南](http://www.ruanyifeng.com/blog/2012/06/sass.html)
 - [30-seconds-of-css](https://30-seconds.github.io/30-seconds-of-css/)
+= [打砖块](https://juejin.im/post/5bb6d4566fb9a05d1b2e6a17?utm_source=gold_browser_extension)
+- [Vim Script](http://learnvimscriptthehardway.onefloweroneworld.com/preface.html)
+- [emmet doc](https://docs.emmet.io/)
