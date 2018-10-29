@@ -31,3 +31,7 @@
 = [打砖块](https://juejin.im/post/5bb6d4566fb9a05d1b2e6a17?utm_source=gold_browser_extension)
 - [Vim Script](http://learnvimscriptthehardway.onefloweroneworld.com/preface.html)
 - [emmet doc](https://docs.emmet.io/)
+- [css grid](https://github.com/wesbos/css-grid)
+
+# 2018-10
+ - [你应该停止使用这3种javascript性能错误](https://hackernoon.com/3-javascript-performance-mistakes-you-should-stop-doing-ebf84b9de951)
