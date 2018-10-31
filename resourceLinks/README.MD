@@ -35,3 +35,4 @@
 
 # 2018-10
  - [你应该停止使用这3种javascript性能错误](https://hackernoon.com/3-javascript-performance-mistakes-you-should-stop-doing-ebf84b9de951)
+ - [Making Sense of React Hooks](https://medium.com/@dan_abramov/making-sense-of-react-hooks-fdbde8803889)
