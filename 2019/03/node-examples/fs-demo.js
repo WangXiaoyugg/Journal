@@ -77,7 +77,7 @@ const path = require('path')
 // }
 
 
-// 中英文JSON合并工具 封装的代码
+// 中英文JSON合并工具 封装的代码,学会使用 reduce的API
 const exsits = filePath => fs.existsSync(filePath);
 const jsonPath = process.argv[2]
 
