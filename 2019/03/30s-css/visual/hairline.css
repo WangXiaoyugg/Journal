@@ -1,0 +1,17 @@
+.hairline-border {
+	box-shadow: 0 0 0 1px;
+}
+
+@media (min-resolution: 2dppx) {
+	.hairline-border {
+		box-shadow: 0 0 0 0.5px;
+	}
+
+}
+
+@media (min-resolution: 3dppx) {
+	.hairline-border {
+		box-shadow: 0 0 0 0.3333px;
+	}
+
+}

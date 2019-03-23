@@ -1,0 +1,3 @@
+.reset-all-styles {
+  all: initial; /*The all property allows you to reset all styles (inherited or not) to default values.*/
+}

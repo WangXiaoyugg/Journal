@@ -1,0 +1,26 @@
+.overflow-scroll-gradient {
+	position: relative;
+}
+
+.overflow-scroll-gradient::after {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	width: 240px;
+	height: 25px;
+	background: linear-gradient(
+	    rgba(255, 255, 255, 0.001),
+	    white
+	  );
+
+	pointer-events: none;
+}
+
+.overflow-scroll-gradient__scroller {
+	overflow-y:scroll;
+	background: white;
+	width: 240px;
+	height: 240px;
+	padding: 15px;
+	line-height: 1.2;
+}

@@ -1,0 +1,17 @@
+.css-not-selector-shortcut {
+	display: flex;
+}
+
+ul {
+	padding-left: 0;
+}
+
+li {
+	list-style-type: none;
+	margin: 0;
+	padding: 0 0.75rem;
+}
+
+li:not(:last-child) {
+	border-right:  2px solid #d2d5e4;
+}

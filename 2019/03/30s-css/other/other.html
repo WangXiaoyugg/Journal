@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>other demo</title>
+	<style>
+		.box-example {
+			height: 280px;
+			background: #222 url('https://image.ibb.co/fUL9nS/wolf.png') no-repeat;
+  			background-position: calc(100% - 20px) calc(100% - 20px);
+		}
+	</style>
+	<style>
+		ul {
+			counter-reset: counter;
+		}
+		li::before {
+			counter-increment: counter;
+			content: counters(counter, '.') ' ';
+		}
+	</style>
+	<style>
+		:root {
+			/*全局变量*/
+		}
+
+		.custom-variables {
+			--same-color: #da7800;
+			--same-keyword: italic;
+			--same-size: 1.25em;
+			--same-complex-value: 1px 1px;
+			color: var(--same-color);
+			font-size: var(--same-size);
+			font-style: var(--same-keyword);
+			text-shadow: var(--same-complex-value);
+		}
+	</style>
+</head>
+<body>
+	<!-- <div class="box-example"></div> -->
+
+	<!-- <ul>
+	  <li>List item</li>
+	  <li>List item</li>
+	  <li>
+	    List item
+	    <ul>
+	      <li>List item</li>
+	      <li>List item</li>
+	      <li>List item</li>
+	    </ul>
+	  </li>
+	</ul> -->
+
+	<p class="custom-variables">CSS is awesome!</p>
+</body>
+</html>

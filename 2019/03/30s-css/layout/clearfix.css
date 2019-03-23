@@ -1,0 +1,14 @@
+.clearfix:after{
+	content: '',
+	display: block;
+	clear: both;
+}
+
+.floated {
+	float: left;
+	margin-top: 10px;
+	margin-right: 10px;
+	background: tomato;
+	color:#fff;
+}
+

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>interactivity demo</title>
+	<style>
+		.unselectable {
+			user-select: none;
+		}
+	</style>
+	<style>
+		form {
+			border: 3px solid #2d98da;
+			color: #000000;
+			padding: 4px;
+		}
+		form:focus-within {
+			background: #f7b731;
+			color: #000000;
+		}
+	</style>
+	<style>
+		.reference {
+			position: relative;
+			background: tomato;
+			width: 100px;
+			height: 100px;
+		}
+		.popout-menu {
+			position: absolute;
+			visibility: hidden;
+			left: 100%;
+			background: #333;
+			color: white;
+			padding: 15px;		
+		}
+		.reference:hover > .popout-menu,
+		.reference:focus > .popout-menu,
+		.reference:focus-within > .popout-menu{
+			visibility: visible;
+		}
+	</style>
+	<style>
+		span {
+			padding: 0 1rem;
+			transition: opacity 0.2s;
+		}
+		.sibling-fade:hover span:not(:hover) {
+			opacity: 0.5;
+		}
+	</style>
+	<style>
+		.switch {
+			position: relative;
+			display: inline-block;
+			width: 40px;
+			height: 20px;
+			background-color: rgba(0,0,0,.25);
+			border-radius: 20px;
+			transition: all .3s;
+		}
+		.switch::after {
+			content: '';
+			position: absolute;
+			width: 18px;
+			height: 18px;
+			border-radius: 18px;
+			background-color: white;
+			top:1px;
+			left: 1px;
+			transition: all 0.3s;
+		}
+		.offscreen {
+			position: absolute;
+			left: -9999px;
+		}
+		input[type='checkbox']:checked + .switch:after {
+			transform: translateX(20px);
+		}
+
+		input[type='checkbox']:checked + .switch {
+			background-color: #7893ff;
+		}
+	</style>
+	<style>
+		.mouse-cursor-gradient-tracking {
+			position: relative;
+			background: #7893ff;
+			padding: 0.5rem 1rem;
+			font-size: 1.2rem;
+			border:none;
+			color: white;
+			cursor: pointer;
+			outline: none;
+			overflow: hidden;
+		}
+		.mouse-cursor-gradient-tracking span {
+			position: relative;
+		}
+		.mouse-cursor-gradient-tracking::before {
+			--size: 0;
+			content: '';
+			position: absolute;
+			left: var(--x);
+			top: var(--y);
+			width: var(--size);
+			height: var(--size);
+			background: radial-gradient(circle closest-side, pink, transparent);
+			transform: translate(-50%, -50%);
+			transition: width 0.2s ease, height 0.2s ease;	
+		}
+
+		.mouse-cursor-gradient-tracking:hover::before {
+			--size:200px;
+		}
+	</style>
+
+</head>
+<body>
+	<!-- <p>You can select me.</p> -->
+	<!-- <p class="unselectable">You can't select me!</p> -->
+
+	<!-- <div class="focus-within">
+		<form>
+			 <label for="given_name">Given Name:</label> <input id="given_name" type="text" /> <br />
+    		 <label for="family_name">Family Name:</label> <input id="family_name" type="text" />
+		</form>
+	</div> -->
+
+	<!-- <div class="reference" tabindex="0">
+		<div class="popout-menu">Popout menu</div>
+	</div> -->
+
+	<!-- <div class="sibling-fade">
+	  <span>Item 1</span> <span>Item 2</span> <span>Item 3</span> <span>Item 4</span>
+	  <span>Item 5</span> <span>Item 6</span>
+	</div> -->
+
+	<!-- input type="checkbox" id="toggle" class="offscreen" /> 
+	<label for="toggle" class="switch"></label> -->
+	
+	<!-- <button class="mouse-cursor-gradient-tracking"><span>Hover me</span></button>
+	<script>
+		var btn = document.querySelector(".mouse-cursor-gradient-tracking")
+		btn.onmousemove = function  (e) {
+			var x = e.pageX - btn.offsetLeft - btn.offsetParent.offsetLeft
+			var y = e.pageY - btn.offsetTop - btn.offsetParent.offsetTop
+			btn.style.setProperty('--x', x + 'px')
+			btn.style.setProperty('--y', y + 'px')
+
+		}
+	</script> -->
+</body>
+</html>

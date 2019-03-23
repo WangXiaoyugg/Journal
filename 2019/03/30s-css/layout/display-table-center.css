@@ -1,0 +1,16 @@
+.container {
+	border: 1px solid #333;
+	height: 250px;
+	width: 250px;
+}
+
+.center {
+	display: table;
+	height: 100%;
+	width: 100%;
+}
+.center > span {
+	display: table-cell;
+	text-align: center;
+	vertical-align: middle;
+}

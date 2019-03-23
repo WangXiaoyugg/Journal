@@ -1,0 +1,24 @@
+.container {
+	margin: 40px auto;
+}
+.element {
+	padding: 20px;
+	height: 300px;
+	width: 100%;
+	background-color: skyblue;
+}
+
+.element p {
+	text-align: center;
+	color: white;
+	font-size: 3em;
+}
+
+.element:-ms-fullscreen p {
+	visibility: visible;
+}
+.element:fullscreen {
+	background-color: #e4708a;
+	width: 100vw;
+	height: 100vh;
+}

@@ -1,0 +1,15 @@
+html, body {
+	height: 100%;
+	margin: 0;
+}
+
+.container {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+.container > div:last-child {
+	background-color: tomato;
+	flex:1;
+}
