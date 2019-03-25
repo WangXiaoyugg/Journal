@@ -144,7 +144,6 @@ function serialize (name, val, options) {
 	}
 
 	// 为避免跨域脚本 (XSS) 攻击，通过JavaScript的 Document.cookie API无法访问带有 HttpOnly 标记
-
 	if(opt.httpOnly) {
 		str += "; HttpOnly";
 	}
@@ -193,7 +192,7 @@ function serialize (name, val, options) {
 function tryDecode (str, decode) {
 	try {
 		return decode(str)
-	} else {
+	} catch (e){
 		return str;
 	}
 }
