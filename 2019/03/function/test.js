@@ -46,6 +46,34 @@ const people = [
 // console.log(_.some([1,3,4], isNaN))
 
 // console.log(people.sort(_.sortBy("firstname")))
-console.log(people.sort(_.sortBy("lastname")))
+// console.log(people.sort(_.sortBy("lastname")))
+
+// _.tap("fun")((it) => console.log("value is ", it));
+// _.forEach([1,2,3,4], (item, index, arr) => {
+// 	_.tap(item)(() => {});
+// })
+
+// let r1 = ['1','2','3'].map(_.unary(parseInt))
+// let r2 = ['1','2','3'].map(parseInt)
+// console.log('r1: ', r1)
+// console.log('r2: ', r2)
+
+// let doPayment = _.once(() => {
+// 	console.log("Payment is done: ")
+// })
+// doPayment()
+// doPayment();
+
+let fastFactorial = _.memoized((n) => {
+	if(n === 0) return 1;
+	return n * fastFactorial(n - 1)
+})
+
+console.log(fastFactorial(5))
+console.log(fastFactorial(3))
+console.log(fastFactorial(7))
+
+
+
 
 

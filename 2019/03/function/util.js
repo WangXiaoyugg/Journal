@@ -54,5 +54,25 @@ _.sortBy = (property) => {
 	}
 }
 
+// 接受一个value,并返回一个包含value的闭包函数
+_.tap = (value) => fn => (typeof fn === 'function' && fn(value), console.log(value));
+
+// 接受多参数函数，并返回只接受一个参数的函数
+_.unary = fn => fn.length === 1 ? fn : (arg) => fn(arg)
+
+_.once = fn => {
+	let done = false;
+	return () => {
+		return done ? undefined : ((done=true), fn.apply(this, arguments));
+	}
+}
+
+_.memoized = fn => {
+	const dict = {}
+	return (arg) => {
+		return dict[arg] || (dict[arg] = fn(arg))
+	};
+}
+
 
 module.exports = _;
