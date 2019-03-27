@@ -64,16 +64,134 @@ const people = [
 // doPayment()
 // doPayment();
 
-let fastFactorial = _.memoized((n) => {
-	if(n === 0) return 1;
-	return n * fastFactorial(n - 1)
-})
+// let fastFactorial = _.memoized((n) => {
+// 	if(n === 0) return 1;
+// 	return n * fastFactorial(n - 1)
+// })
 
-console.log(fastFactorial(5))
-console.log(fastFactorial(3))
-console.log(fastFactorial(7))
+// console.log(fastFactorial(5))
+// console.log(fastFactorial(3))
+// console.log(fastFactorial(7))
 
+// let apressBooks = [
+// 	{
+// 		id: 1,
+// 		title: 'A-test',
+// 		author: 'A',
+// 		rating: [4.7],
+// 		reviews: [
+// 			{good: 4, excellent: 12}
+// 		]
+// 	},
+// 	{
+// 		id: 2,
+// 		title: 'B-test',
+// 		author: 'B',
+// 		rating: [4.5],
+// 		reviews: [
+		
+// 		]
+// 	},
+// 	{
+// 		id: 3,
+// 		title: 'C-test',
+// 		author: 'C',
+// 		rating: [4.0],
+// 		reviews: []
+// 	},
+// 	{
+// 		id: 4,
+// 		title: 'D-test',
+// 		author: 'D',
+// 		rating: [4.2],
+// 		reviews: [
+// 			{good: 14, excellent: 12}
+// 		]
+// 	},
+// ]
 
+// let res3 = _.map(apressBooks, (book) => {
+// 	return {title: book.title, author: book.author}
+// })
+// console.log('res3: ', res3)
 
+// let res4 = _.filter(apressBooks, (book) => book.rating[0] > 4.5)
+// console.log("res4: ", res4)
 
+// 获取rating 在4.5以上的book的影片名称和作者 
+// let res4 = _.map(_.filter(apressBooks, (book) => book.rating[0] > 4.5), (book) => {
+// 	return {title: book.title, author: book.author}
+// })
+// console.log("res4: ", res4);
 
+let bpressBooks = [
+	{
+		name: 'beginners',
+		bookDetails: [
+			{
+				id: 1,
+				title: 'A-test',
+				author: 'A',
+				rating: [4.7],
+				reviews: [
+					{good: 4, excellent: 12}
+				]
+			},
+			{
+				id: 2,
+				title: 'B-test',
+				author: 'B',
+				rating: [4.5],
+				reviews: [
+				
+				]
+			},
+		]
+
+	},
+	{
+		name: "pro",
+		bookDetails: [
+			{
+				id: 3,
+				title: 'C-test',
+				author: 'C',
+				rating: [4.0],
+				reviews: []
+			},
+			{
+				id: 4,
+				title: 'D-test',
+				author: 'D',
+				rating: [4.2],
+				reviews: [
+					{good: 14, excellent: 12}
+				]
+			},
+
+		]
+	}
+	
+]
+
+// const a = [[[1,2,3]], 4,5,6]
+// console.log('a: ', _.concatRecursive(a))
+
+// let goodRating = (book) => book.rating[0] > 4.5;
+// let res4 = _.filter(
+// 	_.concatAll(
+// 		_.map(bpressBooks, (book) => {
+// 			return book.bookDetails
+// 		})
+// 	)
+// , goodRating)
+// console.log("res4: ", res4);
+
+// let res5 = _.reduceEasy([1,2,3,4,5], (acc, val) => acc + val);
+// console.log("res5: ", res5);
+// let res6 = _.reduceEasy([1,2,3,4,5], (acc, val) => acc * val);
+// console.log("res6: ", res6);
+// let res7 = _.reduce([1,2,3,4,5], (acc, val) => acc * val);
+// console.log("res7: ", res7);
+// let res8 = _.zip([1,2,3], [1,2,3], (x, y) => x *y);
+// console.log("res8: ", res8);

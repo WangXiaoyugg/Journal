@@ -60,6 +60,7 @@ _.tap = (value) => fn => (typeof fn === 'function' && fn(value), console.log(val
 // 接受多参数函数，并返回只接受一个参数的函数
 _.unary = fn => fn.length === 1 ? fn : (arg) => fn(arg)
 
+
 _.once = fn => {
 	let done = false;
 	return () => {
@@ -74,5 +75,90 @@ _.memoized = fn => {
 	};
 }
 
+
+_.map = (array, fn) => {
+	let results = []
+	for(const value of array) 
+		results.push(fn(value))
+	return results;
+}
+
+_.filter = (array, fn) => {
+	let results = []
+	for(const value of array) {
+		(fn(value)) ? results.push(value) : undefined
+	}
+	return results;
+}
+
+// 只支持一层的cancatAll;
+// array, [[]]
+// 迭代第一次，value [],
+// https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/apply
+_.concatAll = (array) => {
+	let results = [];
+	for(const value of array) {
+		results.push.apply(results, value);
+	}
+	return results;
+}
+
+// 支持递归多层的嵌套数组
+// [[[123]],[1,2],[1]] => [1,2,3,1,2,1]
+_.concatRecursive = (array) => {
+	let results = [];
+	function concat(arr){
+		for(const value of arr) {
+			if(Array.isArray(value)) {
+				concat(value);
+			} else {
+				results.push(value);
+			}
+		}
+	}
+
+	return concat(array),results;
+}
+
+// 有问题的reduce
+_.reduceEasy = (array, fn) => {
+	let accumlator = 0;
+	for(const value of array) {
+		accumlator = fn(accumlator, value)
+	}
+	return [accumlator];
+} 
+
+// 没有问题的reduce
+_.reduce = (array, fn, initValue) => {
+	let accumlator;
+	if(initValue != undefined) {
+		accumlator = initValue
+	}else {
+		accumlator = array[0];
+	}
+	// 没有初始值从 1开始迭代
+	if(initValue === undefined) {
+		for(let i = 1; i < array.length; i++) {
+			accumlator = fn(accumlator, array[i])
+		}
+	} else {
+		for(const value of array) {
+			accumlator = fn(accumlator, value)
+		}
+	}
+
+	return [accumlator]
+}
+
+// zip 支持合并两个给定的数组
+_.zip = (leftArr, rightArr, fn) => {
+	let index, results = [];
+	let leftLen = leftArr.length, rightLen = rightArr.length;
+	for(index = 0; index < Math.min(leftLen, rightLen); index++) {
+		results.push(fn(leftArr[index], rightArr[index]))
+	}
+	return results;
+}
 
 module.exports = _;
