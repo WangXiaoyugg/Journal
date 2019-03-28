@@ -195,3 +195,53 @@ let bpressBooks = [
 // console.log("res7: ", res7);
 // let res8 = _.zip([1,2,3], [1,2,3], (x, y) => x *y);
 // console.log("res8: ", res8);
+
+ // const add = (x, y) => x + y;
+// const addCurried =  x => y => x + y;
+// console.log(addCurried(4)(4))
+
+// let autoCurriedAdd = _.curry1(add)
+// console.log(autoCurriedAdd(2)(2))
+
+// let multi = (x,y,z) => x * y * z;
+// console.log(_.curry2(multi)(1,2,3))
+// console.log(_.curry3(multi)(1)(2)(3))
+
+// 在数组中查找数字
+// let arr = ['1', 'js','haha']
+// let match = _.curry3(function(expr, str){
+// 	return str.match(expr);
+// })
+// let filter = _.curry3(function(fn, ary){
+// 	return ary.filter(fn);
+// })
+// let hasNumber = match(/\d+/g);
+// let findNumberInArray = filter(hasNumber);
+// console.log(findNumberInArray(arr));
+
+// 求数组的平方
+// let square = (array) => array.map(x => x * 2);
+// let third = (array) => array.map(x => x * x * x);
+// let map = _.curry3(function(fn, ary) {
+// 	return ary.map(fn);
+// })
+// let sqareAll = map(x => x * x);
+// let thirdAll = map(x => x * x * x);
+// console.log(sqareAll([1,3,4]))
+// console.log(thirdAll([1,3,4]))
+
+// setTimeout(() => console.log("hello"), 10);
+// setTimeout(() => console.log("world"), 10);
+// let setTimeoutWrapper = (fn, time) => {
+// 	return setTimeout(time, fn);
+// }
+// let delay10Ms = _.curry3(setTimeoutWrapper)(10);
+// delay10Ms(() => console.log("hello"))
+// delay10Ms(() => console.log("world"))
+let delay20Ms = _.partical(setTimeout, undefined, 10);
+delay20Ms(() => console.log("world"));
+
+let o = {foo: 'bar', bar: "foo"}
+let prettyJSON = _.partical(JSON.stringify, undefined, null, 8);
+console.log(prettyJSON(o));
+

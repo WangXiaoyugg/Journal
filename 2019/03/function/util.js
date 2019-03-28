@@ -161,4 +161,52 @@ _.zip = (leftArr, rightArr, fn) => {
 	return results;
 }
 
+
+
+// 柯里化是把一个多参数函数转换为一个嵌套的一元函数的过程
+_.curry1 = (fn) => {
+	return function (firstArg) {
+		return function(secondArg) {
+			return fn (firstArg, secondArg)
+		}
+	}
+}
+
+_.curry2 = (fn) => {
+	if(typeof fn !== 'function') {
+		throw new Error('No function provided')
+	}
+	return function (...args) {
+		return fn.apply(null, args)
+	}
+}
+
+_.curry3 = (fn) => {
+	if(typeof fn !== 'function') {
+		throw new Error('No function provided')
+	}
+	return function curriedFn(...args) {
+		if(args.length < fn.length) {
+			return function () {
+				var arg = Array.prototype.slice.call(arguments);
+				return curriedFn.apply(null, args.concat(arg));
+			}
+		}
+
+		return fn.apply(null, args);
+	}
+}
+
+_.partical = function(fn, ...partialArgs) {
+	let args = partialArgs;
+	return function(...fullArgs) {
+		let arg = 0;
+		for(let i = 0; i < args.length && arg < fullArgs.length; i++) {
+			if(args[i] === undefined) {
+				args[i] = fullArgs[arg++]
+			} 
+		}
+		return fn.apply(null, args);
+	}
+}
 module.exports = _;
