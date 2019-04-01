@@ -63,21 +63,43 @@ Function.prototype.bind2 = function (context) {
 // bindFoo(18);
 // console.log(bar.bind2(foo)());
 
-var value = 2;
-var foo = {
-	value: 1
+// var value = 2;
+// var foo = {
+// 	value: 1
+// }
+
+// function bar(name, age) {
+// 	this.habit = 'shopping'
+// 	console.log(this.value)
+// 	console.log(name)
+// 	console.log(age)
+// }
+// bar.prototype.friend = 'kevin'
+
+// var bindFoo = bar.bind(foo, 'asren')
+// var obj = new bindFoo('18')
+
+// console.log(obj.habit)
+// console.log(obj.friend)
+
+
+Function.prototype.bind2 = function(context) {
+	var self = this;
+	var args = Array.prototype.slice.call(arguments, 1)
+	var fNOP = function () {}
+	var fBound = function () {
+		var bindArgs = Array.prototype.slice.call(arguments)
+		//  // this instanceof fBound === true时,说明返回的fBound被当做new的构造函数调用
+		var ctx = this instanceof fBound ? this: context
+		return self.apply(ctx, args.concat(bindArgs));
+	}
+	fNOP.prototype = this.prototype;
+	fBound.prototype = new fNOP();
+	return fBound;
 }
 
-function bar(name, age) {
-	this.habit = 'shopping'
-	console.log(this.value)
-	console.log(name)
-	console.log(age)
-}
-bar.prototype.friend = 'kevin'
 
-var bindFoo = bar.bind(foo, 'asren')
-var obj = new bindFoo('18')
 
-console.log(obj.habit)
-console.log(obj.friend)
+// const arr3 = [{name: '妈妈'}, {name: "爸爸"},{name: '奶奶'}]
+// arr3.sort((x,y)=> (x.name).localeCompare(y.name, 'zh-CN'))
+

@@ -143,4 +143,13 @@
 - getPort 库源码阅读
 - image-to-canvas 源码阅读
 - 30s-css 代码练习
-
+- 函数式入门学习
+  高阶函数
+  闭包和高阶函数
+  数组的函数式编程
+  柯里化和偏函数
+- koa的简单实现
+- bind的实现
+- es6
+  let-const
+  arrow-function
