@@ -151,5 +151,10 @@
 - koa的简单实现
 - bind的实现
 - es6
+
   let-const
   arrow-function
+  symbol
+  for-of
+  set 
+  WeakMap

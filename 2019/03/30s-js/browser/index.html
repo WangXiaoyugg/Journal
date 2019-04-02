@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Browser Demo</title>
+	<style>
+		/*.content {
+			height: 100vh; 
+		}*/
+		.item {
+			width: 10px;
+			height: 10px;
+			background-color: #e2e2e2;
+			text-align: center;
+			line-height: 10px;
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">App</div>
+	<div class="special">special</div>
+	<!-- <div class="content"></div> -->
+	<!-- <div class="fooBar">fooBar</div> -->
+	<div class="item">1</div>
+	<div class="item">2</div>
+	<div class="item">3</div>
+	<div class="item">4</div>
+	<div class="item">5</div>
+	<script src='./index.js'></script>
+	<script>
+		// 自定义事件
+		// let app = document.querySelector("#app");
+		// app.addEventListener("cat",(e) => {
+		// 	console.log("触发自定义cat事件")
+		// 	console.log("e.detial: ", e.detail)
+		// }, false)
+		// setTimeout(() => {
+		// 	triggerEvent(app, 'cat')
+		// 	setTimeout(() => {
+		// 		triggerEvent(app, 'cat',{username: "garen"})
+		// 	}, 1000)
+		// },1000);
+		// setTimeout(() => {
+		// 	smoothScroll('.fooBar')
+		// }, 1000)
+		
+		// toggleClass(document.querySelector(".special"), "special")
+		
+		show(...document.querySelectorAll(".item"))
+	</script>
+</body>
+</html>
