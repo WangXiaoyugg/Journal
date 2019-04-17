@@ -158,3 +158,8 @@
   for-of
   set 
   WeakMap
+- 深入理解javascript
+  
+  原型和原型链
+  debounce 防抖
+- lib-flexible 2.0 源码解读

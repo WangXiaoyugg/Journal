@@ -185,6 +185,7 @@ _.curry3 = (fn) => {
 	if(typeof fn !== 'function') {
 		throw new Error('No function provided')
 	}
+
 	return function curriedFn(...args) {
 		if(args.length < fn.length) {
 			return function () {
@@ -192,7 +193,6 @@ _.curry3 = (fn) => {
 				return curriedFn.apply(null, args.concat(arg));
 			}
 		}
-
 		return fn.apply(null, args);
 	}
 }

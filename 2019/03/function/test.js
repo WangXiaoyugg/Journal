@@ -196,16 +196,16 @@ let bpressBooks = [
 // let res8 = _.zip([1,2,3], [1,2,3], (x, y) => x *y);
 // console.log("res8: ", res8);
 
- // const add = (x, y) => x + y;
+// const add = (x, y) => x + y;
 // const addCurried =  x => y => x + y;
 // console.log(addCurried(4)(4))
 
 // let autoCurriedAdd = _.curry1(add)
 // console.log(autoCurriedAdd(2)(2))
 
-// let multi = (x,y,z) => x * y * z;
+let multi = (x,y,z,a) => x * y * z * a;
 // console.log(_.curry2(multi)(1,2,3))
-// console.log(_.curry3(multi)(1)(2)(3))
+console.log(_.curry3(multi)(1)(2)(3)(4))
 
 // 在数组中查找数字
 // let arr = ['1', 'js','haha']
@@ -238,10 +238,10 @@ let bpressBooks = [
 // let delay10Ms = _.curry3(setTimeoutWrapper)(10);
 // delay10Ms(() => console.log("hello"))
 // delay10Ms(() => console.log("world"))
-let delay20Ms = _.partical(setTimeout, undefined, 10);
-delay20Ms(() => console.log("world"));
+// let delay20Ms = _.partical(setTimeout, undefined, 10);
+// delay20Ms(() => console.log("world"));
 
-let o = {foo: 'bar', bar: "foo"}
-let prettyJSON = _.partical(JSON.stringify, undefined, null, 8);
-console.log(prettyJSON(o));
+// let o = {foo: 'bar', bar: "foo"}
+// let prettyJSON = _.partical(JSON.stringify, undefined, null, 8);
+// console.log(prettyJSON(o));
 
