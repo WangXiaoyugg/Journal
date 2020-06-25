@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>demo</title>
+</head>
+<body>
+	<script>
+		function isArray(val) {
+			return toString.call(val) === '[object Array]'
+		}
+
+		function forEach(obj, fn) {
+			if(obj === null || typeof obj === 'undefined') {
+				return;
+			}
+
+			if(typeof obj !== 'object') {
+				// 不是对象给转成数组，方便统一处理
+				obj = [obj]
+			}
+
+			if(isArray(obj)) {
+				for(var i = 0, l = obj.length; i < l; i++) {
+					fn.call(null, obj[i],i,obj)
+				}
+			} else {
+				// 必须对象自身的属性，
+				for(var key in obj) {
+					if(Object.prototype.hasOwnProperty.call(obj, key)) {
+						fn.call(null, obj[key], key, obj)
+					}
+				}
+			}
+		}
+		function deepMerge() {
+			var result = {}
+			function assignValue(val, key) {
+
+				if(typeof result[key] === 'object' && typeof val === 'object') {
+					result[key] = deepMerge(result[key], val)
+				} else if (typeof val === 'object') {
+					// 传空对象有什么用？		
+					result[key] = deepMerge({}, val)
+				} else {
+					result[key] = val;
+				}
+			}
+
+			for(var i = 0, l = arguments.length; i < l; i++) {
+				
+				forEach(arguments[i], assignValue)
+			}
+
+
+			return result;
+		}
+		var o1 = {a:1}
+		var o2 = {b: {c:2}}
+		var r =deepMerge(o1, o2)
+		console.log(r)
+
+	</script>
+</body>
+</html>
